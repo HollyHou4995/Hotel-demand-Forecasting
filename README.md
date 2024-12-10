@@ -74,6 +74,31 @@ These variables refine forecasting by linking ADR with guest behavior and season
    - Covariates were not statistically significant, introducing complexity without improving accuracy.
 
 ---
+## Model Comparison: SARIMA vs. LSTM
+
+### 1. Accuracy (MAE)
+- **SARIMA (without covariates)**: **5.41**
+  - Excels at capturing seasonal and trend components in ADR.
+- **LSTM (with covariates)**: **38.40**
+  - Struggles with abrupt changes in ADR, leading to higher error.
+
+### 2. Complexity
+- **SARIMA**:
+  - Easy to train, interpretable, and computationally efficient.
+  - Best for univariate time-series data.
+- **LSTM**:
+  - Requires significant computational resources (e.g., GPU).
+  - Handles multi-variable data, capturing non-linear patterns.
+
+### 3. Suitability
+- **SARIMA**:
+  - Ideal for datasets with clear seasonality and trends.
+  - Simpler, more robust, and better generalization for ADR.
+- **LSTM**:
+  - Useful when additional covariates (e.g., demographics) strongly impact ADR.
+  - Performs better with larger datasets and complex relationships.
+
+---
 
 ## Key Insights and Recommendations
 1. **Model Comparison**:
@@ -91,3 +116,17 @@ These variables refine forecasting by linking ADR with guest behavior and season
 
 ## Summary
 The SARIMA model without covariates provides the best balance of accuracy, simplicity, and robustness. It effectively captures ADR trends and seasonality, making it a reliable tool for real-world applications in hotel revenue management and demand forecasting.
+
+## Key Insights and Recommendations
+1. **Model Comparison**:
+   - **SARIMA without covariates** is preferred for this dataset due to better accuracy and simplicity.
+   - Covariates do not significantly improve ADR forecasting here.
+
+2. **Application**:
+   - Use SARIMA without covariates for pricing and demand forecasting.
+   - For richer datasets, consider advanced models like SARIMAX or LSTM for incorporating external factors.
+
+3. **Impact of Covariates**:
+   - ADR is driven primarily by intrinsic trends and seasonality in this dataset.
+
+---
